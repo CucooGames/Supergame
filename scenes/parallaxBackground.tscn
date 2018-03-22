@@ -1,0 +1,143 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://art/level/background_sky.png" type="Texture" id=1]
+[ext_resource path="res://art/level/bg_layer_03.png" type="Texture" id=2]
+[ext_resource path="res://art/level/bg_layer_02.png" type="Texture" id=3]
+[ext_resource path="res://art/level/bg_layer_01.png" type="Texture" id=4]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+scroll_offset = Vector2( 0, 0 )
+scroll_base_offset = Vector2( 0, 0 )
+scroll_base_scale = Vector2( 1, 1 )
+scroll_limit_begin = Vector2( 0, 0 )
+scroll_limit_end = Vector2( 0, 0 )
+scroll_ignore_camera_zoom = true
+
+[node name="layer0" type="ParallaxLayer" parent="." index="0"]
+
+motion_scale = Vector2( 0, 0 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 0, 0 )
+_sections_unfolded = [ "Motion" ]
+
+[node name="Sprite" type="Sprite" parent="layer0" index="0"]
+
+position = Vector2( -31.3695, 62.4804 )
+scale = Vector2( 3.5, 3 )
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite2" type="Sprite" parent="layer0" index="1"]
+
+position = Vector2( 1087.34, 59.257 )
+scale = Vector2( 3.5, 3 )
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="layer_1" type="ParallaxLayer" parent="." index="1"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.25, 0.25 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 0, 0 )
+_sections_unfolded = [ "Motion" ]
+
+[node name="Sprite" type="Sprite" parent="layer_1" index="0"]
+
+position = Vector2( 300, 284.995 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite3" type="Sprite" parent="layer_1" index="1"]
+
+position = Vector2( 811.864, 281.528 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite4" type="Sprite" parent="layer_1" index="2"]
+
+position = Vector2( 1325.06, 279.073 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite2" type="Sprite" parent="layer_1" index="3"]
+
+position = Vector2( -178.673, 271.332 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="layer_2" type="ParallaxLayer" parent="." index="2"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.4, 0.4 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 0, 0 )
+_sections_unfolded = [ "Motion" ]
+
+[node name="Sprite" type="Sprite" parent="layer_2" index="0"]
+
+position = Vector2( 300, 353.468 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite3" type="Sprite" parent="layer_2" index="1"]
+
+position = Vector2( -263.52, 352.175 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite2" type="Sprite" parent="layer_2" index="2"]
+
+position = Vector2( 881.992, 349.767 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite4" type="Sprite" parent="layer_2" index="3"]
+
+position = Vector2( 1410.47, 340.508 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="layer_3" type="ParallaxLayer" parent="." index="3"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.5, 0.5 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 0, 0 )
+_sections_unfolded = [ "Motion" ]
+
+[node name="Sprite" type="Sprite" parent="layer_3" index="0"]
+
+position = Vector2( 299.804, 464.093 )
+scale = Vector2( 1, 1.5 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite4" type="Sprite" parent="layer_3" index="1"]
+
+position = Vector2( -299.397, 464.089 )
+scale = Vector2( 1, 1.5 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite2" type="Sprite" parent="layer_3" index="2"]
+
+position = Vector2( 899.232, 464.135 )
+scale = Vector2( 1, 1.5 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite3" type="Sprite" parent="layer_3" index="3"]
+
+position = Vector2( 1496.87, 464.217 )
+scale = Vector2( 1, 1.5 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+

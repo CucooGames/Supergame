@@ -1,0 +1,575 @@
+[gd_scene load_steps=34 format=2]
+
+[ext_resource path="res://scripts/main3.gd" type="Script" id=1]
+[ext_resource path="res://art/level/background_sky.png" type="Texture" id=2]
+[ext_resource path="res://art/level/bg_layer_03.png" type="Texture" id=3]
+[ext_resource path="res://art/level/bg_layer_02.png" type="Texture" id=4]
+[ext_resource path="res://art/level/bg_layer_01.png" type="Texture" id=5]
+[ext_resource path="res://scenes/platform.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scripts/player.gd" type="Script" id=7]
+[ext_resource path="res://art/player/idle/frame-1.png" type="Texture" id=8]
+[ext_resource path="res://art/player/idle/frame-2.png" type="Texture" id=9]
+[ext_resource path="res://art/player/got hit/frame-got-hit.png" type="Texture" id=10]
+[ext_resource path="res://art/player/running/frame-1.png" type="Texture" id=11]
+[ext_resource path="res://art/player/running/frame-2.png" type="Texture" id=12]
+[ext_resource path="res://art/player/running/frame-3.png" type="Texture" id=13]
+[ext_resource path="res://art/player/running/frame-4.png" type="Texture" id=14]
+[ext_resource path="res://art/player/running/frame-5.png" type="Texture" id=15]
+[ext_resource path="res://art/player/running/frame-6.png" type="Texture" id=16]
+[ext_resource path="res://art/player/jump/jump_fall.png" type="Texture" id=17]
+[ext_resource path="res://art/player/jump/jump_up.png" type="Texture" id=18]
+[ext_resource path="res://scenes/wall.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scenes/enemy.tscn" type="PackedScene" id=20]
+[ext_resource path="res://scenes/gem_yellow.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scenes/gem_red.tscn" type="PackedScene" id=22]
+[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=23]
+[ext_resource path="res://art/HUD/play_icon.png" type="Texture" id=24]
+[ext_resource path="res://art/HUD/restart_icon.png" type="Texture" id=25]
+[ext_resource path="res://art/HUD/exit_icon.png" type="Texture" id=26]
+[ext_resource path="res://scenes/HUD_TOUCH_PLAY.tscn" type="PackedScene" id=27]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "idle",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": false,
+"name": "got_hit",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "running",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": false,
+"name": "fall",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ) ],
+"loop": false,
+"name": "jump",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 38.6127
+height = 60.1065
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 40
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 23 )
+_sections_unfolded = [ "Settings" ]
+
+[sub_resource type="Animation" id=4]
+
+resource_name = "game_over_slide_in"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 393, -48 ), Vector2( 393, 175 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+
+resource_name = "game_won_slide_in"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 393, -48 ), Vector2( 393, 175 ) ]
+}
+
+[sub_resource type="DynamicFont" id=6]
+
+size = 40
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 23 )
+_sections_unfolded = [ "Settings" ]
+
+[node name="main3" type="Node" index="0"]
+
+script = ExtResource( 1 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="0"]
+
+editor/display_folded = true
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+scroll_offset = Vector2( 0, 0 )
+scroll_base_offset = Vector2( 0, 0 )
+scroll_base_scale = Vector2( 1, 1 )
+scroll_limit_begin = Vector2( 0, 0 )
+scroll_limit_end = Vector2( 0, 0 )
+scroll_ignore_camera_zoom = true
+
+[node name="layer0" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
+
+position = Vector2( -2.78955, -16.7371 )
+motion_scale = Vector2( 0, 0 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 0, 0 )
+_sections_unfolded = [ "Motion" ]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/layer0" index="0"]
+
+position = Vector2( -31.3695, 62.4804 )
+scale = Vector2( 3.5, 3 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/layer0" index="1"]
+
+position = Vector2( 1087.34, 59.257 )
+scale = Vector2( 3.5, 3 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="layer_1" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
+
+editor/display_folded = true
+position = Vector2( -2.78955, -16.7371 )
+motion_scale = Vector2( 0.25, 0.25 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 0, 0 )
+_sections_unfolded = [ "Motion" ]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/layer_1" index="0"]
+
+position = Vector2( 300, 284.995 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite3" type="Sprite" parent="ParallaxBackground/layer_1" index="1"]
+
+position = Vector2( 811.864, 281.528 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite4" type="Sprite" parent="ParallaxBackground/layer_1" index="2"]
+
+position = Vector2( 1325.06, 279.073 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/layer_1" index="3"]
+
+position = Vector2( -178.673, 271.332 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="layer_2" type="ParallaxLayer" parent="ParallaxBackground" index="2"]
+
+editor/display_folded = true
+position = Vector2( -2.78955, -16.7371 )
+motion_scale = Vector2( 0.4, 0.4 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 0, 0 )
+_sections_unfolded = [ "Motion" ]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/layer_2" index="0"]
+
+position = Vector2( 300, 353.468 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite3" type="Sprite" parent="ParallaxBackground/layer_2" index="1"]
+
+position = Vector2( -263.52, 352.175 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/layer_2" index="2"]
+
+position = Vector2( 881.992, 349.767 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite4" type="Sprite" parent="ParallaxBackground/layer_2" index="3"]
+
+position = Vector2( 1410.47, 340.508 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="layer_3" type="ParallaxLayer" parent="ParallaxBackground" index="3"]
+
+editor/display_folded = true
+position = Vector2( -2.78955, -16.7371 )
+motion_scale = Vector2( 0.5, 0.5 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 0, 0 )
+_sections_unfolded = [ "Motion" ]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/layer_3" index="0"]
+
+position = Vector2( 299.804, 464.093 )
+scale = Vector2( 1, 1.5 )
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite4" type="Sprite" parent="ParallaxBackground/layer_3" index="1"]
+
+position = Vector2( -299.397, 464.089 )
+scale = Vector2( 1, 1.5 )
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/layer_3" index="2"]
+
+position = Vector2( 899.232, 464.135 )
+scale = Vector2( 1, 1.5 )
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite3" type="Sprite" parent="ParallaxBackground/layer_3" index="3"]
+
+position = Vector2( 1496.87, 464.217 )
+scale = Vector2( 1, 1.5 )
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="platform" parent="." index="1" instance=ExtResource( 6 )]
+
+[node name="platform2" parent="." index="2" instance=ExtResource( 6 )]
+
+position = Vector2( 1067.9, 290.171 )
+
+[node name="platform3" parent="." index="3" instance=ExtResource( 6 )]
+
+position = Vector2( -0.805313, 211.789 )
+
+[node name="player" type="KinematicBody2D" parent="." index="4"]
+
+editor/display_folded = true
+position = Vector2( 561.202, 277.193 )
+z_index = 1
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 7 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="sprite" type="AnimatedSprite" parent="player" index="0"]
+
+scale = Vector2( 0.2, 0.2 )
+frames = SubResource( 1 )
+animation = "fall"
+playing = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="collision" type="CollisionShape2D" parent="player" index="1"]
+
+position = Vector2( 5, 0 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="camera" type="Camera2D" parent="player" index="2"]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+
+[node name="wall" parent="." index="5" instance=ExtResource( 19 )]
+
+position = Vector2( 809.574, 266.577 )
+
+[node name="wall3" parent="." index="6" instance=ExtResource( 19 )]
+
+position = Vector2( 258.838, 187.36 )
+
+[node name="wall4" parent="." index="7" instance=ExtResource( 19 )]
+
+position = Vector2( -241.918, 137.748 )
+
+[node name="wall2" parent="." index="8" instance=ExtResource( 19 )]
+
+position = Vector2( 1309.1, 214.232 )
+
+[node name="enemy" parent="." index="9" instance=ExtResource( 20 )]
+
+position = Vector2( 1075.73, 192.299 )
+
+[node name="enemy2" parent="." index="10" instance=ExtResource( 20 )]
+
+position = Vector2( 3.67834, 115.5 )
+
+[node name="gem_yellow" parent="." index="11" instance=ExtResource( 21 )]
+
+position = Vector2( 1237.96, 212.394 )
+
+[node name="gem_yellow2" parent="." index="12" instance=ExtResource( 21 )]
+
+position = Vector2( -170.763, 132.423 )
+
+[node name="gem_red" parent="." index="13" instance=ExtResource( 22 )]
+
+position = Vector2( 522.379, -170.521 )
+
+[node name="canvas" type="CanvasLayer" parent="." index="14"]
+
+layer = 10
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="HUD" type="Control" parent="canvas" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -2.0
+margin_top = -2.0
+margin_right = -2.0
+margin_bottom = -2.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Visibility" ]
+
+[node name="game_over_label" type="Label" parent="canvas/HUD" index="0"]
+
+editor/display_folded = true
+modulate = Color( 0.639216, 0.286275, 0.286275, 1 )
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -119.0
+margin_top = -48.0
+margin_right = 119.0
+margin_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 3 )
+text = "Game Over"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Visibility", "custom_fonts" ]
+
+[node name="anim_slide_in" type="AnimationPlayer" parent="canvas/HUD/game_over_label" index="0"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/game_over_slide_in = SubResource( 4 )
+blend_times = [  ]
+
+[node name="game_won_label" type="Label" parent="canvas/HUD" index="1"]
+
+editor/display_folded = true
+modulate = Color( 0.639216, 0.286275, 0.286275, 1 )
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -119.0
+margin_top = -48.0
+margin_right = 119.0
+margin_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 3 )
+text = "Game Won"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Visibility", "custom_fonts" ]
+
+[node name="anim_slide_in" type="AnimationPlayer" parent="canvas/HUD/game_won_label" index="0"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/game_won_slide_in = SubResource( 5 )
+blend_times = [  ]
+
+[node name="score_label" type="Label" parent="canvas/HUD" index="2"]
+
+modulate = Color( 0.639216, 0.286275, 0.286275, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 15.0
+margin_top = 9.0
+margin_right = 55.0
+margin_bottom = 58.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 6 )
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Visibility", "custom_fonts" ]
+
+[node name="play_btn" type="Button" parent="canvas/HUD" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 474.0
+margin_top = 176.0
+margin_right = 554.0
+margin_bottom = 250.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+icon = ExtResource( 24 )
+flat = false
+align = 1
+
+[node name="replay_btn" type="Button" parent="canvas/HUD" index="4"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -87.0
+margin_top = -37.0
+margin_right = -7.0
+margin_bottom = 37.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+icon = ExtResource( 25 )
+flat = false
+align = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="exit_btn" type="Button" parent="canvas/HUD" index="5"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 7.0
+margin_top = -37.0
+margin_right = 87.0
+margin_bottom = 37.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+icon = ExtResource( 26 )
+flat = false
+align = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="HUD_TOUCH_PLAY" parent="canvas/HUD" index="6" instance=ExtResource( 27 )]
+
+visible = false
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 42.0
+margin_bottom = 42.0
+
+[connection signal="button_up" from="canvas/HUD/play_btn" to="." method="_on_play_btn_button_up"]
+
+[connection signal="button_up" from="canvas/HUD/replay_btn" to="." method="_on_replay_btn_button_up"]
+
+[connection signal="button_up" from="canvas/HUD/exit_btn" to="." method="_on_exit_btn_button_up"]
+
+

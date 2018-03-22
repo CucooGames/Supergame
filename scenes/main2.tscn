@@ -1,0 +1,462 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://scripts/main2.gd" type="Script" id=1]
+[ext_resource path="res://scenes/parallaxBackground.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/gem_yellow.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/gem_red.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/platform.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/wall.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scripts/player.gd" type="Script" id=7]
+[ext_resource path="res://art/player/idle/frame-1.png" type="Texture" id=8]
+[ext_resource path="res://art/player/idle/frame-2.png" type="Texture" id=9]
+[ext_resource path="res://art/player/got hit/frame-got-hit.png" type="Texture" id=10]
+[ext_resource path="res://art/player/running/frame-1.png" type="Texture" id=11]
+[ext_resource path="res://art/player/running/frame-2.png" type="Texture" id=12]
+[ext_resource path="res://art/player/running/frame-3.png" type="Texture" id=13]
+[ext_resource path="res://art/player/running/frame-4.png" type="Texture" id=14]
+[ext_resource path="res://art/player/running/frame-5.png" type="Texture" id=15]
+[ext_resource path="res://art/player/running/frame-6.png" type="Texture" id=16]
+[ext_resource path="res://art/player/jump/jump_fall.png" type="Texture" id=17]
+[ext_resource path="res://art/player/jump/jump_up.png" type="Texture" id=18]
+[ext_resource path="res://scenes/enemy.tscn" type="PackedScene" id=19]
+[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=20]
+[ext_resource path="res://art/HUD/play_icon.png" type="Texture" id=21]
+[ext_resource path="res://art/HUD/restart_icon.png" type="Texture" id=22]
+[ext_resource path="res://art/HUD/exit_icon.png" type="Texture" id=23]
+[ext_resource path="res://scenes/HUD_TOUCH_PLAY.tscn" type="PackedScene" id=24]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "idle",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": false,
+"name": "got_hit",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "running",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": false,
+"name": "fall",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ) ],
+"loop": false,
+"name": "jump",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 38.6127
+height = 60.1065
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 40
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 20 )
+_sections_unfolded = [ "Settings" ]
+
+[sub_resource type="DynamicFont" id=4]
+
+size = 40
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 20 )
+_sections_unfolded = [ "Settings" ]
+
+[sub_resource type="Animation" id=5]
+
+resource_name = "game_over_slide_in"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 393, -48 ), Vector2( 393, 175 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+
+resource_name = "game_won_slide_in"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 393, -48 ), Vector2( 393, 175 ) ]
+}
+
+[node name="main2" type="Node" index="0"]
+
+script = ExtResource( 1 )
+
+[node name="ParallaxBackground" parent="." index="0" instance=ExtResource( 2 )]
+
+[node name="gem_yellow" parent="." index="1" instance=ExtResource( 3 )]
+
+position = Vector2( 35.3039, 273.661 )
+
+[node name="gem_yellow2" parent="." index="2" instance=ExtResource( 3 )]
+
+position = Vector2( 563.231, 309.265 )
+
+[node name="gem_yellow3" parent="." index="3" instance=ExtResource( 3 )]
+
+position = Vector2( 1182.46, -95.6979 )
+
+[node name="gem_yellow5" parent="." index="4" instance=ExtResource( 3 )]
+
+position = Vector2( 1487.09, 420.397 )
+
+[node name="gem_yellow4" parent="." index="5" instance=ExtResource( 3 )]
+
+position = Vector2( 371.281, 119.938 )
+scale = Vector2( 1.06863, 1 )
+
+[node name="gem_red_1" parent="." index="6" instance=ExtResource( 4 )]
+
+position = Vector2( 1516.94, -72.9882 )
+
+[node name="platform_1" parent="." index="7" instance=ExtResource( 5 )]
+
+position = Vector2( 245.81, 491.89 )
+
+[node name="platform_2" parent="." index="8" instance=ExtResource( 5 )]
+
+position = Vector2( 862.823, 420.115 )
+
+[node name="platform_4" parent="." index="9" instance=ExtResource( 5 )]
+
+position = Vector2( 542.939, 188.404 )
+
+[node name="platform_5" parent="." index="10" instance=ExtResource( 5 )]
+
+position = Vector2( 1216.46, -24.007 )
+rotation = -0.523599
+
+[node name="platform_3" parent="." index="11" instance=ExtResource( 5 )]
+
+position = Vector2( 1473.38, 511.3 )
+
+[node name="wall" parent="." index="12" instance=ExtResource( 6 )]
+
+position = Vector2( 303.879, 113.96 )
+
+[node name="wall2" parent="." index="13" instance=ExtResource( 6 )]
+
+position = Vector2( 677.514, 113.057 )
+
+[node name="wall3" parent="." index="14" instance=ExtResource( 6 )]
+
+position = Vector2( 1712.55, 435.771 )
+
+[node name="wall4" parent="." index="15" instance=ExtResource( 6 )]
+
+position = Vector2( 1240.76, 434.264 )
+
+[node name="player" type="KinematicBody2D" parent="." index="16"]
+
+editor/display_folded = true
+position = Vector2( 287.527, 296.406 )
+z_index = 1
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 7 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="sprite" type="AnimatedSprite" parent="player" index="0"]
+
+scale = Vector2( 0.2, 0.2 )
+frames = SubResource( 1 )
+animation = "fall"
+playing = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="collision" type="CollisionShape2D" parent="player" index="1"]
+
+position = Vector2( 5, 0 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="camera" type="Camera2D" parent="player" index="2"]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+
+[node name="enemy_1" parent="." index="17" instance=ExtResource( 19 )]
+
+position = Vector2( 624.428, 98.423 )
+
+[node name="enemy_2" parent="." index="18" instance=ExtResource( 19 )]
+
+position = Vector2( 1307.99, 414.374 )
+
+[node name="enemy_3" parent="." index="19" instance=ExtResource( 19 )]
+
+position = Vector2( 1651.11, 408.558 )
+
+[node name="canvas" type="CanvasLayer" parent="." index="20"]
+
+layer = 10
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="HUD" type="Control" parent="canvas" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -2.0
+margin_top = -2.0
+margin_right = -2.0
+margin_bottom = -2.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Visibility" ]
+
+[node name="score_label" type="Label" parent="canvas/HUD" index="0"]
+
+modulate = Color( 0.639216, 0.286275, 0.286275, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 15.0
+margin_top = 9.0
+margin_right = 55.0
+margin_bottom = 58.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 3 )
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Visibility", "custom_fonts" ]
+
+[node name="game_over_label" type="Label" parent="canvas/HUD" index="1"]
+
+editor/display_folded = true
+modulate = Color( 0.639216, 0.286275, 0.286275, 1 )
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -119.0
+margin_top = -48.0
+margin_right = 119.0
+margin_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 4 )
+text = "Game Over"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Visibility", "custom_fonts" ]
+
+[node name="anim_slide_in" type="AnimationPlayer" parent="canvas/HUD/game_over_label" index="0"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/game_over_slide_in = SubResource( 5 )
+blend_times = [  ]
+
+[node name="game_won_label" type="Label" parent="canvas/HUD" index="2"]
+
+editor/display_folded = true
+modulate = Color( 0.639216, 0.286275, 0.286275, 1 )
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -119.0
+margin_top = -48.0
+margin_right = 119.0
+margin_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 4 )
+text = "Game Won"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Visibility", "custom_fonts" ]
+
+[node name="anim_slide_in" type="AnimationPlayer" parent="canvas/HUD/game_won_label" index="0"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/game_won_slide_in = SubResource( 6 )
+blend_times = [  ]
+
+[node name="play_btn" type="Button" parent="canvas/HUD" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 470.0
+margin_top = 173.0
+margin_right = 550.0
+margin_bottom = 247.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+icon = ExtResource( 21 )
+flat = false
+align = 1
+
+[node name="replay_btn" type="Button" parent="canvas/HUD" index="4"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -87.0
+margin_top = -37.0
+margin_right = -7.0
+margin_bottom = 37.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+icon = ExtResource( 22 )
+flat = false
+align = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="exit_btn" type="Button" parent="canvas/HUD" index="5"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 7.0
+margin_top = -37.0
+margin_right = 87.0
+margin_bottom = 37.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+icon = ExtResource( 23 )
+flat = false
+align = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="HUD_TOUCH_PLAY" parent="canvas/HUD" index="6" instance=ExtResource( 24 )]
+
+visible = false
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 42.0
+margin_bottom = 42.0
+
+[connection signal="button_up" from="canvas/HUD/play_btn" to="." method="_on_play_btn_button_up"]
+
+[connection signal="button_up" from="canvas/HUD/replay_btn" to="." method="_on_replay_btn_button_up"]
+
+[connection signal="button_up" from="canvas/HUD/exit_btn" to="." method="_on_exit_btn_button_up"]
+
+

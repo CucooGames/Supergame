@@ -1,0 +1,62 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://scripts/enemy.gd" type="Script" id=1]
+[ext_resource path="res://art/enemy/p1_walk01.png" type="Texture" id=2]
+[ext_resource path="res://art/enemy/p1_walk02.png" type="Texture" id=3]
+[ext_resource path="res://art/enemy/p1_walk03.png" type="Texture" id=4]
+[ext_resource path="res://art/enemy/p1_walk04.png" type="Texture" id=5]
+[ext_resource path="res://art/enemy/p1_walk05.png" type="Texture" id=6]
+[ext_resource path="res://art/enemy/p1_walk06.png" type="Texture" id=7]
+[ext_resource path="res://art/enemy/p1_walk07.png" type="Texture" id=8]
+[ext_resource path="res://art/enemy/p1_walk08.png" type="Texture" id=9]
+[ext_resource path="res://art/enemy/p1_walk09.png" type="Texture" id=10]
+[ext_resource path="res://art/enemy/p1_walk10.png" type="Texture" id=11]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 41.1893
+height = 56.9852
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "walking",
+"speed": 8.0
+} ]
+
+[node name="enemy" type="Area2D"]
+
+position = Vector2( 553.857, 208.955 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+SPEED = 100
+
+[node name="collision" type="CollisionShape2D" parent="." index="0"]
+
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="sprite" type="AnimatedSprite" parent="." index="1"]
+
+scale = Vector2( 1.5, 1.5 )
+frames = SubResource( 2 )
+animation = "walking"
+flip_h = true
+_sections_unfolded = [ "Transform" ]
+
+[connection signal="body_entered" from="." to="." method="_on_enemy_body_entered"]
+
+
