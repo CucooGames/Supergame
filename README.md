@@ -29,6 +29,7 @@ It contains basic game-mechanics like:
 The game consists of a menu and three levels. The enemies in the levels should be dodged to avoid a game-over. In the third level, the player can shoot. The levels are finished by collecting the red rubies.
 
 The game offers keyboard controls as well as touch controls for mobile devices.
+Keyboard controls are: Left, Right, Up, Space.
 
 
 The assets, used for the game, are taken from here:
