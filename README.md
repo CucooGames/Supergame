@@ -2,7 +2,7 @@
 
 This is a simple 2D-platformer, made as tutorial for GODOT game engine. The scripts are written in GDscript version 3.
 
-
+![alt text](https://github.com/CucooGames/Supergame/blob/master/README.png)
 
 It contains basic game-mechanics like:
 
@@ -33,6 +33,6 @@ The game offers keyboard controls as well as touch controls for mobile devices.
 
 The assets, used for the game, are taken from here:
 
-https://opengameart.org/content/platformer-art-deluxe
+https://opengameart.org/content/platformer-art-deluxe \n
 https://opengameart.org/content/red-haired-run-and-jump-sprite-sheets
 http://pixeljoint.com/pixelart/79211.htm
