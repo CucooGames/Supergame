@@ -34,5 +34,5 @@ The game offers keyboard controls as well as touch controls for mobile devices.
 The assets, used for the game, are taken from here:
 
 https://opengameart.org/content/platformer-art-deluxe \
-https://opengameart.org/content/red-haired-run-and-jump-sprite-sheets
+https://opengameart.org/content/red-haired-run-and-jump-sprite-sheets \
 http://pixeljoint.com/pixelart/79211.htm
